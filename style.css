@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    margin: 10px auto;
+    text-align: center;
+    max-width: 800px;
+}
