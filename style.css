@@ -2,8 +2,16 @@
     box-sizing: border-box;
 }
 
+ul {
+    list-style: none;
+}
+
 .container {
     margin: 10px auto;
     text-align: center;
     max-width: 800px;
+}
+
+.bold {
+    font-weight: bold;
 }
