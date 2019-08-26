@@ -20,7 +20,7 @@
                     <h3>Search for travel TV shows based on a destination</h3>
                 </header>
                 <form id="js-submit">
-                    <input id="js-search-query" type="text" placeholder="'South Africa'">
+                    <input id="js-search-query" type="text" placeholder="'South Africa'" required>
                     <input type="submit"> 
                 </form>
                 <br>
@@ -32,7 +32,7 @@
             </section>
         </div>
     </div>
-    <section class="show-results js-results">
+    <section id='js-search-results' class="show-results js-results hidden">
         <ul class="js-display-list"></ul>
     </section>
     <script src="app.js"></script>
