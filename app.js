@@ -31,17 +31,15 @@ function findAllShows(currentPage) {
         if (response.ok) {
             return response.json();
         }
-        throw new Error(response.statusText);
+        throw new Error(response.error);
     })
     .then(responseJson => {
         for(var i = 0; i < responseJson.length; i++){
-            if(responseJson[i].genres[0] === "Travel" || responseJson[i].genres[1] === "Travel"){
-              // let showList = [];
+            if((responseJson[i].genres[0] === "Travel" || responseJson[i].genres[1] === "Travel") && (responseJson[i].language === "English")){
               let programList = [];
-              // showList.push(`${responseJson[i].id}`);
               programList.push(`${responseJson[i].id}`);
               programList.push(`${responseJson[i].name}`)
-              // findAllEpisodes(showList);
+              programList.push(`${responseJson[i].url}`)
               findAllEpisodes(programList)
             }
         }
@@ -71,17 +69,27 @@ function findAllEpisodes(id) {
         let fullOutput = [];
         fullOutput.push(`${id[1]}`)
         fullOutput.push(`${responseJson[i].name}`)
-        // displayResults(responseJson[i].name)
+        fullOutput.push(`${responseJson[i].url}`)
         displayResults(fullOutput);
-      } 
+      } else {
+        displayError();
+      }
     }
   })
+  .catch(err => {
+    $('#js-results').append(`There was an error. Please try again`);
+  });
 }
 
 function displayResults(titles) {
     $('.js-display-list').append(`
-    <li>${titles[0]} - <span class='bold'>${titles[1]}</span></li>
+    <li>${titles[0]} - <span class='bold'>${titles[1]}</span> <a href='${titles[2]}'>More Info</a></li>
   `)
+  $('#js-search-results').removeClass('hidden');
+}
+
+function displayError() {
+  $('#js-results').append(`<h2>Could not find a matching show - Please try again!</h2>`);
 }
 
 function watchForm() {
