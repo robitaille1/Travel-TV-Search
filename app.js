@@ -36,10 +36,13 @@ function findAllShows(currentPage) {
     .then(responseJson => {
         for(var i = 0; i < responseJson.length; i++){
             if(responseJson[i].genres[0] === "Travel" || responseJson[i].genres[1] === "Travel"){
-              let showList = [];
+              // let showList = [];
               let programList = [];
-              showList.push(`${responseJson[i].id}`);
-              findAllEpisodes(showList);
+              // showList.push(`${responseJson[i].id}`);
+              programList.push(`${responseJson[i].id}`);
+              programList.push(`${responseJson[i].name}`)
+              // findAllEpisodes(showList);
+              findAllEpisodes(programList)
             }
         }
     })
@@ -52,7 +55,7 @@ function findAllShows(currentPage) {
 //Take the travel show ids and use them to find all the episodes for that show
 //If the episode name contains the user search input, then display that episode
 function findAllEpisodes(id) {
-  const episodeUrl = 'http://api.tvmaze.com/shows/'+ id + '/episodes'
+  const episodeUrl = 'http://api.tvmaze.com/shows/'+ id[0] + '/episodes'
   fetch(episodeUrl)
   .then(response => {
     if (response.ok) {
@@ -65,7 +68,11 @@ function findAllEpisodes(id) {
       var episodeTitle = responseJson[i].name.toUpperCase();
       var userSearch = searchInput.toUpperCase();
       if(episodeTitle.includes(userSearch) === true){
-        displayResults(responseJson[i].name)
+        let fullOutput = [];
+        fullOutput.push(`${id[1]}`)
+        fullOutput.push(`${responseJson[i].name}`)
+        // displayResults(responseJson[i].name)
+        displayResults(fullOutput);
       } 
     }
   })
@@ -73,7 +80,7 @@ function findAllEpisodes(id) {
 
 function displayResults(titles) {
     $('.js-display-list').append(`
-    <li>${titles}</li>
+    <li>${titles[0]} - <span class='bold'>${titles[1]}</span></li>
   `)
 }
 
