@@ -12,21 +12,29 @@
   crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class='container'>
-        <header>
-            <h1>Travel TV Search</h1>
-            <h3>Search for travel TV shows based on a destination</h3>
-        </header>
-        <section role="main">
-            <form id="js-submit">
-                <input id="js-search-query" type="text" placeholder="'South Africa'">
-                <input type="submit">
-            </form>
-        </section>
-        <section class="js-results">
-            <ul class="js-display-list"></ul>
-        </section>
+    <div class="hero-image">
+        <div class='container'>
+            <section role="main" class="hero-text">
+                <header>
+                    <h1 class="main-title">Travel TV Search</h1>
+                    <h3>Search for travel TV shows based on a destination</h3>
+                </header>
+                <form id="js-submit">
+                    <input id="js-search-query" type="text" placeholder="'South Africa'">
+                    <input type="submit"> 
+                </form>
+                <br>
+                <a class="example js-input-example">Examples:</a>
+                <a class="example js-input-example">Kenya</a>
+                <a class="example js-input-example">Sydney</a>
+                <a class="example js-input-example">India</a>
+                <a class="example js-input-example">London</a>
+            </section>
+        </div>
     </div>
+    <section class="show-results js-results">
+        <ul class="js-display-list"></ul>
+    </section>
     <script src="app.js"></script>
 </body>
 </html>
