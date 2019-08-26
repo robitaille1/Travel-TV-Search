@@ -3,8 +3,7 @@
 const searchUrl = 'http://api.tvmaze.com/shows';
 let searchInput = '';
 
-
-
+//Loop Through all show pages from the API
 function loopPages() {
   let currentPage = 0;
   while(currentPage <= 173){
@@ -19,6 +18,7 @@ function formatQueryParams(params) {
     return queryItems.join('&');
   }
 
+//Loop through each show page and find the show ID for any travel shows
 function findAllShows(currentPage) {
     const params = {
       page: currentPage,
@@ -49,6 +49,8 @@ function findAllShows(currentPage) {
 
 }
 
+//Take the travel show ids and use them to find all the episodes for that show
+//If the episode name contains the user search input, then display that episode
 function findAllEpisodes(id) {
   const episodeUrl = 'http://api.tvmaze.com/shows/'+ id + '/episodes'
   fetch(episodeUrl)
@@ -68,8 +70,6 @@ function findAllEpisodes(id) {
     }
   })
 }
-
-
 
 function displayResults(titles) {
     $('.js-display-list').append(`
