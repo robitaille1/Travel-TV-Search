@@ -1,6 +1,6 @@
 'use strict';
 
-const searchUrl = 'http://api.tvmaze.com/shows';
+const searchUrl = 'https://api.tvmaze.com/shows';
 let searchInput = '';
 
 //Loop Through all show pages from the API
@@ -55,7 +55,7 @@ function findAllShows(currentPage) {
 //Take the travel show ids and use them to find all the episodes for that show
 //If the episode name contains the user search input, then display that episode
 function findAllEpisodes(id) {
-  const episodeUrl = 'http://api.tvmaze.com/shows/'+ id[0] + '/episodes'
+  const episodeUrl = 'https://api.tvmaze.com/shows/'+ id[0] + '/episodes'
   fetch(episodeUrl)
   .then(response => {
     if (response.ok) {
