@@ -60,7 +60,9 @@ function findAllEpisodes(id) {
   })
   .then(responseJson => {
     for(var i = 0; i < responseJson.length; i++){
-      if(responseJson[i].name.includes(searchInput) === true){
+      var episodeTitle = responseJson[i].name.toUpperCase();
+      var userSearch = searchInput.toUpperCase();
+      if(episodeTitle.includes(userSearch) === true){
         displayResults(responseJson[i].name)
       } 
     }
@@ -79,6 +81,7 @@ function watchForm() {
     $('form').submit(event => {
       event.preventDefault();
       searchInput = $('#js-search-query').val();
+      $('.js-display-list').empty();
       loopPages();
     });
   }
