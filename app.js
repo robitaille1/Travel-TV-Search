@@ -59,7 +59,7 @@ function findAllEpisodes(id) {
     if (response.ok) {
       return response.json();
     }
-    throw new Error(response.statusText);
+    throw new Error(response.error);
   })
   .then(responseJson => {
     for(var i = 0; i < responseJson.length; i++){
@@ -83,7 +83,7 @@ function findAllEpisodes(id) {
 
 function displayResults(titles) {
     $('.js-display-list').append(`
-    <li>${titles[0]} - <span class='bold'>${titles[1]}</span> <a href='${titles[2]}'>More Info</a></li>
+    <li><span class='bold'>${titles[0]}</span> - ${titles[1]} <a target="_blank" rel="noopener noreferrer" href='${titles[2]}'>More Info</a></li>
   `)
   $('#js-search-results').removeClass('hidden');
 }
