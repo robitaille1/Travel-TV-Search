@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Merriweather&display=swap" rel="stylesheet">
     <title>Travel TV Search</title>
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -17,11 +18,12 @@
             <section role="main" class="hero-text">
                 <header>
                     <h1 class="main-title">Travel TV Search</h1>
-                    <h3>Search for travel TV shows based on a destination</h3>
+                    <p>Looking for travel inspiration?</p>
+                    <p>Search for travel TV shows based on a destination</p>
                 </header>
                 <form id="js-submit">
-                    <input id="js-search-query" type="text" placeholder="'South Africa'" required>
-                    <input type="submit"> 
+                    <input class="user-input" id="js-search-query" type="text" placeholder="Where do you want to go?" required>
+                    <input class="btn" type="submit"> 
                 </form>
                 <br>
                 <a class="example js-input-example">Examples:</a>
