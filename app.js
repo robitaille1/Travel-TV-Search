@@ -25,7 +25,6 @@ function findAllShows(currentPage) {
     };
     const queryString = formatQueryParams(params)
     const url = searchUrl + '?' + queryString;
-
     fetch(url)
     .then(response => {
         if (response.ok) {
@@ -40,7 +39,7 @@ function findAllShows(currentPage) {
               programList.push(`${responseJson[i].id}`);
               programList.push(`${responseJson[i].name}`)
               programList.push(`${responseJson[i].url}`)
-              findAllEpisodes(programList)
+              findAllEpisodes(programList);
             }
         }
     })
