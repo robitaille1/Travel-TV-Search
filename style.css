@@ -98,8 +98,21 @@ li {
 
 .js-display-list {
     padding: 0;
+    width: 75%;
+    float: right;
 }
 
 .hidden {
     display: none;
 }
+
+.map-div {
+    margin: 25px 20px;
+    width: 250px;
+    height: 250px;
+    float: left;
+}
+
+/* #map {
+    height: 100%;
+  } */
