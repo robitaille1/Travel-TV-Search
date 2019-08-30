@@ -29,9 +29,7 @@ function findAllEpisodes(shows) {
         fullOutput.push(`${responseJson[i].name}`)
         fullOutput.push(`${responseJson[i].url}`)
         displayResults(fullOutput);
-      } else {
-        displayError();
-      }
+      } 
     }
   })
   .catch(err => {
@@ -47,7 +45,8 @@ function displayResults(titles) {
 }
 
 function displayError() {
-  $('#js-results').append(`<h2>Could not find a matching show - Please try again!</h2>`);
+  $('#js-search-results').removeClass('hidden');
+  $('.js-results').append(`<h2>Could not find a matching show - Please try again!</h2>`);
 }
 
 function watchForm() {
