@@ -1,7 +1,6 @@
 'use strict';
 
 let searchInput = '';
-const myKey = config.MY_KEY;
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
