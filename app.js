@@ -1,7 +1,9 @@
 'use strict';
 
 let searchInput = '';
+const mapMarkers = [];
 
+//Create Google Map
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 8,
@@ -25,13 +27,21 @@ function geocodeAddress(geocoder, resultsMap) {
         map: resultsMap,
         position: results[0].geometry.location
       });
+      mapMarkers.push(marker);
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
 }
 
+function removeMarkers(){
+  for(i=0; i < mapMarkers.length; i++){
+      mapMarkers[i].setMap(null);
+  }
+}
+
 function loopStore() {
+  STORE.sort(dynamicSort("title"));
   for(let i = 0; i < STORE.length; i++){
     findAllEpisodes(STORE[i]);
   }
@@ -85,6 +95,7 @@ function watchForm() {
       $('.js-display-list').empty();
       loopStore();
       scrollResults();
+      removeMarkers();
     });
   }
 
@@ -92,6 +103,23 @@ function watchForm() {
     $('html, body').animate({
         scrollTop: $("#js-search-results").offset().top
     }, 1000);
+}
+
+function dynamicSort(property) {
+  var sortOrder = 1;
+
+  if(property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+  }
+
+  return function (a,b) {
+      if(sortOrder == -1){
+          return b[property].localeCompare(a[property]);
+      }else{
+          return a[property].localeCompare(b[property]);
+      }        
+  }
 }
 
 $(watchForm);
