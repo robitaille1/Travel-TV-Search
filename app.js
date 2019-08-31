@@ -84,7 +84,14 @@ function watchForm() {
       searchInput = $('#js-search-query').val();
       $('.js-display-list').empty();
       loopStore();
+      scrollResults();
     });
   }
+
+  function scrollResults () {
+    $('html, body').animate({
+        scrollTop: $("#js-search-results").offset().top
+    }, 1000);
+}
 
 $(watchForm);
