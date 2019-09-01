@@ -9,9 +9,23 @@ body {
     font-family: 'Merriweather', serif;
 }
 
-.user-input {
+ul {
+    list-style: none;
+}
+
+li {
+    margin: 10px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.397);
     padding: 10px;
+    border-radius: 7px;
+    background-color: rgba(223, 221, 221, 0.623);
+}
+
+.user-input {
+    padding: 11px;
     width: 500px;
+    border-radius: 5px;
+    border: none;
 }
 
 .user-input::placeholder{
@@ -21,17 +35,14 @@ body {
 .btn {
     padding: 10px;
     width: 100px;
-
-}
-
-ul {
-    list-style: none;
-}
-
-li {
-    margin: 10px 0px;
-    border: 1px solid black;
-    padding: 10px;
+    background-color: #008CBA;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 .container {
@@ -58,7 +69,6 @@ li {
 .hero-text h1 {
     font-size: 5em;
     margin-bottom: 10px;
-    /* font-family: 'Fira Sans', sans-serif; */
 }
 
 .hero-text {
@@ -87,10 +97,6 @@ li {
     padding: 0px 10px;
 }
 
-/* .example::after {
-    content: '   |';
-} */
-
 .show-results {
     text-align: center;
     padding: 10px 70px;
@@ -112,7 +118,3 @@ li {
     height: 250px;
     float: left;
 }
-
-/* #map {
-    height: 100%;
-  } */
