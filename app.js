@@ -6,8 +6,9 @@ const mapMarkers = [];
 //Create Google Map
 function initMap() {
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: {lat: 37.0902, lng: 95.7129}
+    zoom: 11,
+    center: {lat: 37.0902, lng: 95.7129},
+    disableDefaultUI: true
   });
   var geocoder = new google.maps.Geocoder();
 
@@ -35,7 +36,7 @@ function geocodeAddress(geocoder, resultsMap) {
 }
 
 function removeMarkers(){
-  for(i=0; i < mapMarkers.length; i++){
+  for(var i = 0; i < mapMarkers.length; i++){
       mapMarkers[i].setMap(null);
   }
 }
@@ -78,15 +79,17 @@ function findAllEpisodes(shows) {
 
 function displayResults(titles) {
     $('.js-display-list').append(`
-    <li><span class='bold'>${titles[0]}</span> - ${titles[1]} <a target="_blank" rel="noopener noreferrer" href='${titles[2]}'>More Info</a></li>
+    <li class='search-results'><span class='bold'>${titles[0]}</span> - ${titles[1]} <a target="_blank" rel="noopener noreferrer" href='${titles[2]}'>More Info</a></li>
   `)
   $('#js-search-results').removeClass('hidden');
 }
 
-function displayError() {
-  $('#js-search-results').removeClass('hidden');
-  $('.js-results').append(`<h2>Could not find a matching show - Please try again!</h2>`);
-}
+// function displayError() {
+//   if($('.search-results').length === 0){
+//     $('.js-display-list').addClass('hidden');
+//     $('.js-results').append(`<h2>Could not find a matching show - Please try again!</h2>`);
+//   }
+// }
 
 function watchForm() {
     $('form').submit(event => {
