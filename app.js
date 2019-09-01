@@ -81,26 +81,26 @@ function displayResults(titles) {
     $('.js-display-list').append(`
     <li class='search-results'><span class='bold'>${titles[0]}</span> - ${titles[1]} <a target="_blank" rel="noopener noreferrer" href='${titles[2]}'>More Info</a></li>
   `)
-  $('#js-search-results').removeClass('hidden');
+  $('#results-div').removeClass('hidden');
+  $('#results-div').addClass('show-results-padding');
 }
 
-// function displayError() {
-//   if($('.search-results').length === 0){
-//     $('.js-display-list').addClass('hidden');
-//     $('.js-results').append(`<h2>Could not find a matching show - Please try again!</h2>`);
-//   }
-// }
+function displayError() {
+    $('.js-display-list').addClass('hidden');
+    $('.js-results').append(`<h2>Could not find a matching show - Please try again!</h2>`);
+  
+}
 
 function watchForm() {
-    $('form').submit(event => {
-      event.preventDefault();
-      searchInput = $('#js-search-query').val();
-      $('.js-display-list').empty();
-      loopStore();
-      scrollResults();
-      removeMarkers();
-    });
-  }
+  $('#js-btn').on('click', (event => {
+    event.preventDefault();
+    searchInput = $('#js-search-query').val();
+    $('.js-display-list').empty();
+    loopStore();
+    scrollResults();
+    removeMarkers();
+  }));
+}
 
   function scrollResults () {
     $('html, body').animate({

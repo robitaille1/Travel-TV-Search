@@ -23,7 +23,7 @@
                 </header>
                 <form id="js-submit">
                     <input class="user-input" id="js-search-query" type="text" placeholder="Where do you want to go?" required>
-                    <input class="btn" type="submit"> 
+                    <input id='js-btn'class="btn" type="submit"> 
                 </form>
                 <br>
                 <a class="example js-input-example">Examples:</a>
@@ -34,9 +34,11 @@
             </section>
         </div>
     </div>
-    <section id='js-search-results' class="show-results js-results hidden">
-        <div id="map" class="hidden map-div"></div>
-        <ul class="js-display-list"></ul>
+    <section id='js-search-results' class="show-results js-results">
+        <div id='results-div' class="hidden">
+            <div id="map" class="map-div"></div>
+            <ul class="js-display-list"></ul>
+        </div>
     </section>
     <script src="app.js"></script>
     <script src="library.js"></script>
