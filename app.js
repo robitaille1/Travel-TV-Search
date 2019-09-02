@@ -2,6 +2,7 @@
 
 let searchInput = '';
 const mapMarkers = [];
+// var counter = 0;
 
 //Create Google Map
 function initMap() {
@@ -48,6 +49,8 @@ function loopStore() {
   }
 }
 
+
+
 //Take the travel show ids and use them to find all the episodes for that show
 //If the episode name contains the user search input, then display that episode
 function findAllEpisodes(shows) {
@@ -58,6 +61,7 @@ function findAllEpisodes(shows) {
       return response.json();
     }
     throw new Error(response.error);
+
   })
   .then(responseJson => {
     for(var i = 0; i < responseJson.length; i++){
@@ -68,8 +72,10 @@ function findAllEpisodes(shows) {
         fullOutput.push(`${shows.title}`)
         fullOutput.push(`${responseJson[i].name}`)
         fullOutput.push(`${responseJson[i].url}`)
+        // counter++;
         displayResults(fullOutput);
-      } 
+        // checkAmount(fullOutput);
+      }  
     }
   })
   .catch(err => {
@@ -86,10 +92,18 @@ function displayResults(titles) {
 }
 
 function displayError() {
-    $('.js-display-list').addClass('hidden');
-    $('.js-results').append(`<h2>Could not find a matching show - Please try again!</h2>`);
-  
+    console.log('error');
+    $('#results-div').addClass('hidden');
+    $('#js-error').removeClass('hidden');
 }
+
+// function checkAmount(fullOutput){
+//   if(counter === 0){
+//     displayError();
+//   } else {
+//     displayResults(fullOutput);
+//   }
+// }
 
 function watchForm() {
   $('#js-btn').on('click', (event => {
@@ -99,8 +113,17 @@ function watchForm() {
     loopStore();
     scrollResults();
     removeMarkers();
+    // counter = 0;
   }));
 }
+
+// function displayError() {
+//   if($('.js-display-list li').length > 0){
+//     console.log('all good');
+//   } else {
+//     console.log('all bad');
+//   }
+// }
 
   function scrollResults () {
     $('html, body').animate({
