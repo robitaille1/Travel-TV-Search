@@ -2,7 +2,6 @@
 
 let searchInput = '';
 const mapMarkers = [];
-// var counter = 0;
 
 //Create Google Map
 function initMap() {
@@ -49,8 +48,6 @@ function loopStore() {
   }
 }
 
-
-
 //Take the travel show ids and use them to find all the episodes for that show
 //If the episode name contains the user search input, then display that episode
 function findAllEpisodes(shows) {
@@ -72,10 +69,10 @@ function findAllEpisodes(shows) {
         fullOutput.push(`${shows.title}`)
         fullOutput.push(`${responseJson[i].name}`)
         fullOutput.push(`${responseJson[i].url}`)
-        // counter++;
         displayResults(fullOutput);
-        // checkAmount(fullOutput);
-      }  
+      }  else {
+        displayError();
+      }
     }
   })
   .catch(err => {
@@ -84,26 +81,23 @@ function findAllEpisodes(shows) {
 }
 
 function displayResults(titles) {
-    $('.js-display-list').append(`
+  $('.js-display-list').append(`
     <li class='search-results'><span class='bold'>${titles[0]}</span> - ${titles[1]} <a target="_blank" rel="noopener noreferrer" href='${titles[2]}'>More Info</a></li>
   `)
   $('#results-div').removeClass('hidden');
   $('#results-div').addClass('show-results-padding');
+  $('#js-error').addClass('hidden');
 }
 
 function displayError() {
-    console.log('error');
+  if($('.js-display-list li').length === 0) {
     $('#results-div').addClass('hidden');
     $('#js-error').removeClass('hidden');
+  } else {
+    $('#js-error').addClass('hidden');
+    $('#results-div').removeClass('hidden');
+  }
 }
-
-// function checkAmount(fullOutput){
-//   if(counter === 0){
-//     displayError();
-//   } else {
-//     displayResults(fullOutput);
-//   }
-// }
 
 function watchForm() {
   $('#js-btn').on('click', (event => {
@@ -113,32 +107,21 @@ function watchForm() {
     loopStore();
     scrollResults();
     removeMarkers();
-    // counter = 0;
   }));
 }
 
-// function displayError() {
-//   if($('.js-display-list li').length > 0){
-//     console.log('all good');
-//   } else {
-//     console.log('all bad');
-//   }
-// }
-
-  function scrollResults () {
-    $('html, body').animate({
-        scrollTop: $("#js-search-results").offset().top
-    }, 1000);
+function scrollResults () {
+  $('html, body').animate({
+      scrollTop: $("#js-search-results").offset().top
+  }, 1000);
 }
 
 function dynamicSort(property) {
   var sortOrder = 1;
-
   if(property[0] === "-") {
       sortOrder = -1;
       property = property.substr(1);
   }
-
   return function (a,b) {
       if(sortOrder == -1){
           return b[property].localeCompare(a[property]);
