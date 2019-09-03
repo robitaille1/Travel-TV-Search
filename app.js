@@ -12,10 +12,10 @@ function initMap() {
   });
   var geocoder = new google.maps.Geocoder();
 
-  $('form').submit(event => {
+  $('#js-btn').on('click', (event => {
     event.preventDefault();
     geocodeAddress(geocoder, map);
-  });
+  }))
 }
 
 function geocodeAddress(geocoder, resultsMap) {
