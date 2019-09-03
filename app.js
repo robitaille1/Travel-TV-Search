@@ -30,7 +30,7 @@ function geocodeAddress(geocoder, resultsMap) {
       });
       mapMarkers.push(marker);
     } else {
-      alert('Geocode was not successful for the following reason: ' + status);
+      console.log('Geocode was not successful for the following reason: ' + status);
     }
   });
 }
