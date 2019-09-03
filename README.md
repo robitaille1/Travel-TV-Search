@@ -1,6 +1,6 @@
 # Travel TV Search
 
-[Travel TV Search] (https://robitaille1.github.io/Travel-TV-Search/)
+https://robitaille1.github.io/Travel-TV-Search/
 
 
 ![Travel Tv Search Screenshot](screenshots/Home.png)
