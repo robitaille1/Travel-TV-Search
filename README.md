@@ -3,7 +3,7 @@
 [Travel TV Search] (https://robitaille1.github.io/Travel-TV-Search/)
 
 
-![Travel Tv Search Screenshot](screenshots/home.png)
+![Travel Tv Search Screenshot](screenshots/Home.png)
 
 Summary:
 Search for travel shows based on an input destination.
